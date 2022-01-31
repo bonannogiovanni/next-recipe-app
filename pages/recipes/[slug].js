@@ -49,17 +49,17 @@ export default function OneRecipe({ data, preview }) {
   };
   return (
     <article className="recipe">
-      <h1>{recipe.name}</h1>
+      <h1>{recipe?.name}</h1>
 
       <button className="like-button" onClick={addLike}>
         {likes} ❤️
       </button>
 
       <main className="content">
-        <img src={urlFor(recipe?.mainImage).url()} alt={recipe.name} />
+        <img src={urlFor(recipe?.mainImage).url()} alt={recipe?.name} />
         <div className="breakdown">
           <ul className="ingredients">
-            {recipe.ingredient?.map((ingredient) => (
+            {recipe?.ingredient?.map((ingredient) => (
               <li key={ingredient._key} className="ingredient">
                 {ingredient?.wholeNumber}
                 {ingredient?.fraction} {ingredient?.unit}

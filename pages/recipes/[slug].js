@@ -26,6 +26,7 @@ const recipeQuery = `*[_type == "recipe" && slug.current == $slug][0]{
     }`;
 
 export default function OneRecipe({ data, preview }) {
+  const [likes, setLikes] = useState(data?.recipe?.likes);
   const router = useRouter();
 
   const { data: recipe } = usePreviewSubscription(recipeQuery, {
@@ -38,7 +39,7 @@ export default function OneRecipe({ data, preview }) {
     return <div>Loading</div>;
   }
 
-  const [likes, setLikes] = useState(data?.recipe?.likes);
+  
 
   const addLike = async () => {
     const res = await fetch("/api/handle-like", {

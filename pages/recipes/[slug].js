@@ -26,7 +26,7 @@ const recipeQuery = `*[_type == "recipe" && slug.current == $slug][0]{
     }`;
 
 export default function OneRecipe({ data, preview }) {
-  const [likes, setLikes] = useState(data?.recipe?.likes);
+ 
   const router = useRouter();
 
   const { data: recipe } = usePreviewSubscription(recipeQuery, {
@@ -34,6 +34,8 @@ export default function OneRecipe({ data, preview }) {
     initialData: data,
     enabled: preview,
   });
+
+  const [likes, setLikes] = useState(data?.recipe?.likes);
 
   if (router.isFallback) {
     return <div>Loading</div>;
